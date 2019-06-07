@@ -1,0 +1,1 @@
+web: gunicorn AlphaKnowledge_project.wsgi --log-file -
