@@ -3,5 +3,8 @@
     "scripts": {
       "build": "cd client && npm install && npm run build && cd ..",
       "postinstall": "npm run build && echo 'Client built!'"
+    },
+    "engines": {
+      "node": "11.12.0"
     }
 }
