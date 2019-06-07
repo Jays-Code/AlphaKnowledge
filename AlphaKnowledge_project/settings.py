@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'AlphaKnowledge.urls'
+ROOT_URLCONF = 'AlphaKnowledge_app.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'AlphaKnowledge.wsgi.application'
+WSGI_APPLICATION = 'AlphaKnowledge_app.wsgi.application'
 
 
 # Database
