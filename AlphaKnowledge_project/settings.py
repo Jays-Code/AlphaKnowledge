@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'AlphaKnowledge_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'AlphaKnowledge_db',
+        'NAME': 'alphaknowledge_db',
         'USER': 'jay',
         'PASSWORD': 'forthewin',
         'HOST': 'localhost'
