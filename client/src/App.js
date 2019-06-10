@@ -1,15 +1,16 @@
 import React from 'react';
-import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+// import React, {Component} from "react";
+// import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 //import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Switch>
+        Im react 
+        {/* <Switch>
           <Route exact path = "/" component = {UserLogin}/>
-        </Switch>
+        </Switch> */}
       </header>
     </div>
   );
