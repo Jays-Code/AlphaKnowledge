@@ -34,3 +34,11 @@ background:white;
 text-align: center;
 border: solid black;
 `
+
+export const GenericDiv = styled.div`
+background:white;
+text-align: center;
+border: solid black;
+position: relative;
+margin: auto;
+`

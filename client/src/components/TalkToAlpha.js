@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 //import { StyledButton } from '../style'
 import { StyledScrollbox } from '../style'
 import { DialogueDiv } from '../style'
 
-class TalkToAlpha extends React.Component {
+class TalkToAlpha extends Component {
+    /*
+    state = {
+        error: '',
+    }   
+    */
+
+
     render() {
         return (
             <DialogueDiv>
