@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import UserLogin from "./components/UserLogin"
 import Navbar from "./components/Navbar";
 import TalkToAlpha from "./components/TalkToAlpha";
+import About from "./components/About"
 //import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         {<Switch>
           <Route exact path = "/Login" component = {UserLogin}/>
           <Route path = "/TalkToAlpha" component = {TalkToAlpha}/>
+          <Route path = "/About" component = {About}/>
         </Switch>}
         </Router>
       </header>

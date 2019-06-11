@@ -19,3 +19,18 @@ padding: 0.25em 1em;
 export const StyledLabel = styled.label`
 text-decoration: bold;
 font-style: oblique;
+`
+
+export const StyledScrollbox = styled.div`
+height:20vh;
+width:50vw;
+overflow:scroll;
+border:9px inset orange;
+position: relative;
+margin: auto;
+`
+export const DialogueDiv = styled.div`
+background:white;
+text-align: center;
+border: solid black;
+`
