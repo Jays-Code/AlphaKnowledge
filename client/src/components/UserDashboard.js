@@ -28,8 +28,8 @@ class UserDashboard extends Component {
                     <DialogueDiv><Link to="/conversations">Conversations</Link></DialogueDiv>
                     <DialogueDiv><Link to="/topics">Topics</Link></DialogueDiv>
                 </div>
-
-                <div>
+                <Topics/>
+   {/* <div>
                     <Router>
                         {<Switch>
                             <Route path="/conversations" component={Conversations} />
@@ -37,6 +37,7 @@ class UserDashboard extends Component {
                         </Switch>}
                     </Router>
                 </div>
+              */}
             </div>
         )
     }

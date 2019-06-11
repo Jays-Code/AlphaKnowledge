@@ -15,8 +15,8 @@ class TopicsSerializer(serializers.ModelSerializer):
         fields = ('subject', 'notes', 'username')
 
 class UserSerializer(serializers.ModelSerializer):
-    Conversations = ConversationsSerializer(many=True, read_only=True)
-    Topics = TopicsSerializer(many=True, read_only=True)
+    UserConversations = ConversationsSerializer(many=True, read_only=True)
+    UserTopics = TopicsSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('username', 'password', 'UserConversations', 'UserTopics')

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StyledScrollbox } from '../style'
 import { DialogueDiv } from '../style'
 
+
 class TalkToAlpha extends Component {
     /*
     state = {

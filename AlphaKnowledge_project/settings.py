@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
-    'AlphaKnowledge_app'
+    'AlphaKnowledge_app',
+    # 'python-decouple'
+
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,6 @@ STATIC_URL = '/static/'
 import django_heroku
 django_heroku.settings(locals())
 
+from decouple import config
+
+appid = config('appid', default='')
