@@ -32,6 +32,7 @@ class Topics extends Component {
 
     componentDidMount() {
         this.getTopics()
+        console.log(this.state.topics)
     }
 
     handlechange = (event) => {
@@ -42,7 +43,7 @@ class Topics extends Component {
 
     createTopic = (event) => {
         event.preventDefault()
-        axios.post('/api/topics', {
+        axios.post('/api/v1/topics/', {
             subject: this.state.newTopic.subject,
             notes: this.state.newTopic.notes
         })
@@ -62,6 +63,7 @@ class Topics extends Component {
 
 
     render() {
+     
         return (
             <div>
                 <h2>Topics</h2>
@@ -81,15 +83,17 @@ class Topics extends Component {
                         input type="text"
                         name="subject"
                         onChange={this.handlechange}
-                        value={this.state.newTopic.notes} />
+                        placeholder={this.state.newTopic.subject} 
+                        />
                     <br></br>
-                    <StyledLabel>Create notes: </StyledLabel>
+                    <StyledLabel htmlFor="notes">Create notes: </StyledLabel>
                     <input
                         id="notes"
                         input type="text"
                         name="notes"
                         onChange={this.handleChange}
-                        value={this.state.newTopic.notes} />
+                        placeholder={this.state.newTopic.notes} 
+                        />
                     <button type="submit">Add a new topic</button>
                 </form>
             </div>
