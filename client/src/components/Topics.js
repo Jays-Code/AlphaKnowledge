@@ -5,50 +5,97 @@ import styled from 'styled-components';
 import { StyledScrollbox } from '../style'
 import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
+import { StyledLabel } from '../style'
 import axios from 'axios'
 
 
 
 class Topics extends Component {
-    
+
     state = {
         error: '',
-        topics: []
-    }   
-    
+        topics: [],
+
+        newTopic: {
+            subject: '',
+            notes: ''
+        }
+
+    }
+
 
     getTopics = () => {
-        axios.get('/api/v1/topics/').then((res)=> {
-            this.setState({topics: res.data})
+        axios.get('/api/v1/topics/').then((res) => {
+            this.setState({ topics: res.data })
         })
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.getTopics()
     }
+
+    handlechange = (event) => {
+        const cloneNewTopic = { ...this.state.newTopic }
+        cloneNewTopic[event.target.name] = event.target.value
+        this.setState({ newTopic: cloneNewTopic })
+    }
+
+    createTopic = (event) => {
+        event.preventDefault()
+        axios.post('/api/topics', {
+            subject: this.state.newTopic.subject,
+            notes: this.state.newTopic.notes
+        })
+            .then(res => {
+                const topicList = [...this.state.topics]
+                topicList.unshift(res.data)
+                this.setState({
+                    newTopic: {
+                        subject: '',
+                        notes: ''
+                    },
+                    topics: topicList
+                })
+            })
+        this.getTopics()
+    }
+
+
     render() {
         return (
             <div>
-               Im a topic 
-               {this.state.topics.map(topic => {
-                   return (
-                       <div>
-                       <p>{topic.subject}</p>
-                       <p>{topic.notes}</p>
-                       </div>
-                    
+                <h2>Topics</h2>
+                {this.state.topics.map(topic => {
+                    return (
+                        <div>
+                            <p>{topic.subject}</p>
+                            <p>{topic.notes}</p>
+                        </div>
+
                     )
-               })}
-                <form >
-                    <span>Input field for subjects: </span>
-                    <input id="subject" input type="text" name="subject"/>
-        
-                    <span>Input field for notes: </span>
-                    <input id="notes" input type="text" name="notes"/>
-                    <button type="submit">Submit</button>
+                })}
+                <form onSubmit={this.createTopic} >
+                    <StyledLabel htmlFor="subject">Create a subject: </StyledLabel>
+                    <input
+                        id="subject"
+                        input type="text"
+                        name="subject"
+                        onChange={this.handlechange}
+                        value={this.state.newTopic.notes} />
+                    <br></br>
+                    <StyledLabel>Create notes: </StyledLabel>
+                    <input
+                        id="notes"
+                        input type="text"
+                        name="notes"
+                        onChange={this.handleChange}
+                        value={this.state.newTopic.notes} />
+                    <button type="submit">Add a new topic</button>
                 </form>
             </div>
         )
     }
+
 }
 
 export default Topics;

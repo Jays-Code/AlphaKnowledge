@@ -20,7 +20,7 @@ class Conversations extends Component {
         return (
             <div>
                
-                <p>Here is a list of your past conversations</p>
+                <h2>Conversations</h2>
             </div>
         )
     }

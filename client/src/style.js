@@ -42,3 +42,16 @@ border: solid black;
 position: relative;
 margin: auto;
 `
+
+export const JustifiedDiv = styled.div`
+display: flex;
+justify-content: center;
+background: green;
+border: solid white;
+`
+export const InlineDiv = styled.div`
+display: flex;
+justify-content: center;
+background: #b81239
+border: solid black;
+`
