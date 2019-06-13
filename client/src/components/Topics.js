@@ -18,7 +18,8 @@ class Topics extends Component {
 
         newTopic: {
             subject: '',
-            notes: ''
+            notes: '',
+           // username: 
         }
 
     }
@@ -45,7 +46,8 @@ class Topics extends Component {
         event.preventDefault()
         axios.post('/api/v1/topics/', {
             subject: this.state.newTopic.subject,
-            notes: this.state.newTopic.notes
+            notes: this.state.newTopic.notes,
+            userId: this.props.userId
         })
             .then(res => {
                 const topicList = [...this.state.topics]

@@ -65,10 +65,10 @@ class UserLogin extends React.Component {
 
             <div>
                 <h2>Choose a user</h2>
-                {this.state.users.map(user => {
+                {this.state.users.map((user, index) => {
                     return (
-                        <div key={user.username}>
-                            <Link to={`userdashboard/${user.username}`}>{user.username}</Link>
+                        <div key={index}>
+                            <Link to={{pathname: `userdashboard/${user.username}`, user: user}}>{user.username}</Link>
                         </div>
                     )
                 })

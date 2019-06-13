@@ -7,16 +7,16 @@ from .models import User, Conversations, Topics
 class ConversationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conversations
-        fields = ('question', 'answer', 'time', 'username')
+        fields = ('id', 'question', 'answer', 'time', 'userId' )
 
 class TopicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topics
-        fields = ('subject', 'notes', 'username')
+        fields = ('id', 'subject', 'notes', 'userId' )
 
 class UserSerializer(serializers.ModelSerializer):
     UserConversations = ConversationsSerializer(many=True, read_only=True)
     UserTopics = TopicsSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('username', 'password', 'UserConversations', 'UserTopics')
+        fields = ('id', 'username', 'password', 'UserConversations', 'UserTopics')
