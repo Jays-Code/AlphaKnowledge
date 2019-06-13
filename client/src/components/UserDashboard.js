@@ -7,6 +7,7 @@ import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { JustifiedDiv } from '../style'
 import { InlineDiv } from '../style'
+import { StyledLink } from '../style'
 import Conversations from '../components/Conversations'
 import Topics from '../components/Topics'
 
@@ -36,6 +37,12 @@ class UserDashboard extends Component {
                     <Topics />
                     <Conversations />
                 </InlineDiv>
+                <br></br>
+                <JustifiedDiv>
+                    <StyledLink to="/TalkToAlpha">Talk to Alpha!</StyledLink>
+                </JustifiedDiv>
+
+
                 {/* <div>
                     <Router>
                         {<Switch>

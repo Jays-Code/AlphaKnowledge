@@ -25,7 +25,8 @@ class Navbar extends Component {
 
     return (
       <StyledDiv>
-          <Link to = "/">Home</Link>
+          <Link to = "/">Login</Link>
+          <StyledLink to = "/UserDashboard/:id">User Dashboard</StyledLink>
           <StyledLink to = "/About">About</StyledLink>
       </StyledDiv>
     );

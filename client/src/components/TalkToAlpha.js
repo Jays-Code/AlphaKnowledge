@@ -5,6 +5,7 @@ import { StyledScrollbox } from '../style'
 import { DialogueDiv } from '../style'
 
 
+
 class TalkToAlpha extends Component {
     /*
     state = {
@@ -13,12 +14,15 @@ class TalkToAlpha extends Component {
     */
 
 
+
+
+
     render() {
         return (
             <DialogueDiv>
-                <p>Ask Away!</p>
+                <h2>Ask Away!</h2>
                 <form>
-                <span>Input field: </span>
+                <span>Enter your question: </span>
                 <input id = "question" input type = "text" name= "question"></input>
                 </form>
                 <br></br>
