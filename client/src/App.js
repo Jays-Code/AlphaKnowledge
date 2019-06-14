@@ -16,17 +16,14 @@ import { DialogueDiv } from './style'
 class App extends Component {
 
   state = {
-    users: [],
-
+    
     newUser: {
       username: '',
       password: ''
     },
 
-    loginInfo: {
-      username: '',
-      //password: ''
-    },
+    currentUser: {},
+    
     redirect: false
   }
 
@@ -48,16 +45,24 @@ class App extends Component {
       this.getUserList()
     }
 
+    setCurrentUser = (currentUser) => {
+      this.setState({ currentUser })
+    }
     
 
   render() {
+
+    let showUserLogin = () =>  (<UserLogin setCurrentUser={this.setCurrentUser} />)
+    
+
+
     return (
       <div className="App">
         <header className="App-header">
           <Router>
             <Navbar></Navbar>
             {<Switch>
-              <Route exact path="/" component={UserLogin} />
+              <Route exact path="/" render={showUserLogin} />
               <Route exact path="/About" component={About} />
               <Route exact path="/UserDashboard/:id" component={UserDashboard} />
               <Route exact path="/TalkToAlpha" component={TalkToAlpha} />

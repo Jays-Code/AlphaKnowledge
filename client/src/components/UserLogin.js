@@ -12,12 +12,39 @@ import axios from 'axios'
 class UserLogin extends React.Component {
 
     state = {
+        loginInfo: {
+            username: ''
+        }
+
+    }
+
+    handleChange = (event) => {
+        const cloneLoggedUser = { ...this.state.loginInfo }
+        cloneLoggedUser[event.target.name] = event.target.value
+        this.setState({ loginInfo: cloneLoggedUser })
+
+    }
+
+
+     proceedLogin = (event) => {
+         event.preventDefault()
+         console.log(this.state.loginInfo.username)
+         axios.get(`api/v1/user/username/${this.state.loginInfo.username}`).then(res => {
+            this.props.setCurrentUser( res.data )
+        })
+    }
+
+    // }
+
+
+    /*
+    state = {
         users: [],
 
         newUser: {
-            username: '',
-            password: ''
-        },
+            //username: '',
+            //password: ''
+        //},
 
         loginInfo: {
             username: '',
@@ -25,30 +52,29 @@ class UserLogin extends React.Component {
         },
         redirect: false
     }
+    */
+    /*
+        createUser = (event) => {
+            event.preventDefault()
+            axios.post('api/v1/user/', {
+              username: this.state.newUser.username,
+              password: this.state.newUser.password
+            }).then(res => {
+              const usersList = [...this.state.users]
+              usersList.unshift(res.data)
+              this.setState({
+                newUser: {
+                  name: '',
+                  password: ''
+                },
+                users: usersList
+              })
+      
+            })
+          }
+    */
 
-    createUser = (event) => {
-        event.preventDefault()
-        axios.post('api/v1/user/', {
-          username: this.state.newUser.username,
-          password: this.state.newUser.password
-        }).then(res => {
-          const usersList = [...this.state.users]
-          usersList.unshift(res.data)
-          this.setState({
-            newUser: {
-              name: '',
-              password: ''
-            },
-            users: usersList
-          })
-  
-        })
-      }
 
-
-    // proceedLogin = (event) => {
-
-    // }
     // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
     /*
         getUserList = () => {
@@ -89,6 +115,9 @@ class UserLogin extends React.Component {
         return (
             <div>
                 <div>
+                    {/*
+                }
+                <div>
                     <h2>Login with a user</h2>
                     {this.state.users.map((user, index) => {
                         return (
@@ -99,9 +128,9 @@ class UserLogin extends React.Component {
                     })
 
                     }
+                */}
 
-
-                    <form onSubmit={this.createUser}>
+                    <form onSubmit={this.proceedLogin}>
                         <div>
                             <StyledLabel htmlFor="username">Username: </StyledLabel>
                             <input
@@ -113,17 +142,6 @@ class UserLogin extends React.Component {
                             />
                         </div>
                         <div>
-                            {/*
-                    <StyledLabel htmlFor="password">Password: </StyledLabel>
-
-                    <input
-                        id="password"
-                        type="text"
-                        password="password"
-                        onChange={this.handleChange}
-                        placeholder={this.state.loginInfo.password}
-                    />
-                     */}
                             <input type="submit" value="Login" />
                         </div>
                     </form>
@@ -132,10 +150,10 @@ class UserLogin extends React.Component {
 
 
 
-
+                {/*
                 <div>
                     <h2>Create a new user</h2>
-                    <form onSubmit={this.proceedLogin} >
+                    <form onSubmit={this.createUser} >
                         <StyledLabel htmlFor="subject">Username: </StyledLabel>
                         <input
                             id="username"
@@ -158,10 +176,14 @@ class UserLogin extends React.Component {
                         <button type="submit">Create</button>
                     </form>
                 </div>
+                 */}
             </div>
-        )
-    }
-
-}
-
+            
+                )
+               
+            }
+        
+        
+        }
+        
 export default UserLogin;
