@@ -31,7 +31,7 @@ class App extends Component {
   }
 
 
-  proceedLogin = (event) => {
+  //proceedLogin = (event) => {
    // this.state.loginInfo.username
 
     // }
@@ -66,7 +66,6 @@ class App extends Component {
 
       })
     }
-  }
 
   render() {
     return (
