@@ -25,7 +25,7 @@ class UserLogin extends React.Component {
         },
         redirect: false
     }
-    
+
     createUser = (event) => {
         event.preventDefault()
         axios.post('api/v1/user/', {
@@ -124,7 +124,7 @@ class UserLogin extends React.Component {
                         placeholder={this.state.loginInfo.password}
                     />
                      */}
-                            <input type="submit">Login</input>
+                            <input type="submit" value="Login" />
                         </div>
                     </form>
                 </div>
