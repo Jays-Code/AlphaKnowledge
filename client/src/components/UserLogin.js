@@ -25,6 +25,26 @@ class UserLogin extends React.Component {
         },
         redirect: false
     }
+    
+    createUser = (event) => {
+        event.preventDefault()
+        axios.post('api/v1/user/', {
+          username: this.state.newUser.username,
+          password: this.state.newUser.password
+        }).then(res => {
+          const usersList = [...this.state.users]
+          usersList.unshift(res.data)
+          this.setState({
+            newUser: {
+              name: '',
+              password: ''
+            },
+            users: usersList
+          })
+  
+        })
+      }
+
 
     // proceedLogin = (event) => {
 
@@ -104,9 +124,7 @@ class UserLogin extends React.Component {
                         placeholder={this.state.loginInfo.password}
                     />
                      */}
-                            <button type="submit">Login</button>
-
-
+                            <input type="submit">Login</input>
                         </div>
                     </form>
                 </div>

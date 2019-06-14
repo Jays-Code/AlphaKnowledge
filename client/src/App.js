@@ -48,24 +48,7 @@ class App extends Component {
       this.getUserList()
     }
 
-    createUser = (event) => {
-      event.preventDefault()
-      axios.post('api/v1/user/', {
-        username: this.state.newUser.username,
-        password: this.state.newUser.password
-      }).then(res => {
-        const usersList = [...this.state.users]
-        usersList.unshift(res.data)
-        this.setState({
-          newUser: {
-            name: '',
-            password: ''
-          },
-          users: usersList
-        })
-
-      })
-    }
+    
 
   render() {
     return (
