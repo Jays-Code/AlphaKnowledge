@@ -1,6 +1,7 @@
 //import React from 'react';
-import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import React, { Component } from "react";
+import axios from 'axios'
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 import UserLogin from "./components/UserLogin"
 import Navbar from "./components/Navbar";
 import TalkToAlpha from "./components/TalkToAlpha";
@@ -9,22 +10,80 @@ import UserDashboard from "./components/UserDashboard"
 import { DialogueDiv } from './style'
 //import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">        
-        <Router>
-          <Navbar></Navbar>
-        {<Switch>
-          <Route exact path = "/" component = {UserLogin}/>
-          <Route exact path = "/About" component = {About}/>
-          <Route exact path = "/UserDashboard/:id" component = {UserDashboard}/>
-          <Route exact path = "/TalkToAlpha" component = {TalkToAlpha}/>
-        </Switch>}
-        </Router>
-      </header>
-    </div>
-  );
-}
 
+
+
+class App extends Component {
+
+  state = {
+    users: [],
+
+    newUser: {
+      username: '',
+      password: ''
+    },
+
+    loginInfo: {
+      username: '',
+      //password: ''
+    },
+    redirect: false
+  }
+
+
+  proceedLogin = (event) => {
+   // this.state.loginInfo.username
+
+    // }
+    // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
+
+    getUserList = () => {
+      axios.get('api/v1/user').then((res) => {
+        this.setState({ users: res.data })
+        console.log(res.data)
+      })
+    }
+
+    componentDidMount = () => {
+      this.getUserList()
+    }
+
+    createUser = (event) => {
+      event.preventDefault()
+      axios.post('api/v1/user/', {
+        username: this.state.newUser.username,
+        password: this.state.newUser.password
+      }).then(res => {
+        const usersList = [...this.state.users]
+        usersList.unshift(res.data)
+        this.setState({
+          newUser: {
+            name: '',
+            password: ''
+          },
+          users: usersList
+        })
+
+      })
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Router>
+            <Navbar></Navbar>
+            {<Switch>
+              <Route exact path="/" component={UserLogin} />
+              <Route exact path="/About" component={About} />
+              <Route exact path="/UserDashboard/:id" component={UserDashboard} />
+              <Route exact path="/TalkToAlpha" component={TalkToAlpha} />
+            </Switch>}
+          </Router>
+        </header>
+      </div>
+    );
+  }
+}
 export default App;

@@ -18,6 +18,11 @@ class UserLogin extends React.Component {
             username: '',
             password: ''
         },
+
+        loginInfo: {
+            username: '',
+            //password: ''
+        },
         redirect: false
     }
 
@@ -25,7 +30,7 @@ class UserLogin extends React.Component {
 
     // }
     // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
-
+/*
     getUserList = () => {
         axios.get('api/v1/user').then(res => {
             this.setState({ users: res.data })
@@ -55,16 +60,16 @@ class UserLogin extends React.Component {
         })
 
     }
-
+*/
     render() {
 
         if (this.state.redirect) {
             return <Redirect to='/userdashboard/:id' />;
         }
         return (
-
+<div>
             <div>
-                <h2>Choose a user</h2>
+                <h2>Login with a user</h2>
                 {this.state.users.map((user, index) => {
                     return (
                         <div key={index}>
@@ -84,10 +89,11 @@ class UserLogin extends React.Component {
                         type="text"
                         name="username"
                         onChange={this.handleChange}
-                        placeholder={this.state.newUser.username}
+                        placeholder={this.state.loginInfo.username}
                     />
                 </div>
                 <div>
+                    {/*
                     <StyledLabel htmlFor="password">Password: </StyledLabel>
 
                     <input
@@ -95,9 +101,11 @@ class UserLogin extends React.Component {
                         type="text"
                         password="password"
                         onChange={this.handleChange}
-                        placeholder={this.state.newUser.password}
+                        placeholder={this.state.loginInfo.password}
                     />
-                    <button type="submit">Create a user</button>
+                     */}
+                    <button type="submit">Login</button>
+                   
 
                 </div>
             </form>
@@ -106,9 +114,9 @@ class UserLogin extends React.Component {
 
 
 
-            /*
+            
                         <div>
-                            <p>Login Component</p>
+                            <h2>Create a new user</h2>
                             <form onSubmit={this.proceedLogin} >
                                 <StyledLabel htmlFor="subject">Username: </StyledLabel>
                                 <input
@@ -116,21 +124,23 @@ class UserLogin extends React.Component {
                                     input type="text"
                                     name="username"
                                     onChange={this.handlechange}
-                                    placeholder={this.state.loginInfo.username}
+                                    placeholder={this.state.newUser.username}
                                 />
                                 <br></br>
+                             
                                 <StyledLabel>Password: </StyledLabel>
                                 <input
                                     id="password"
                                     input type="text"
                                     name="password"
                                     onChange={this.handleChange}
-                                    placeholder={this.state.loginInfo.password}
+                                    placeholder={this.state.newUser.password}
                                 />
-                                <button type="submit">Login</button>
+                    
+                                <button type="submit">Create</button>
                             </form>
                         </div>
-                        */
+                        </div>
         )
     }
 
