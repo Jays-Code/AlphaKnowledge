@@ -24,7 +24,7 @@ class UserDashboard extends Component {
 
 
     render() {
-        console.log(this.props.location.user);
+        console.log(this.props.currentUser);
         return (
             <div>
                 <div>
@@ -35,8 +35,8 @@ class UserDashboard extends Component {
                     <DialogueDiv><Link to="/topics">Topics</Link></DialogueDiv>*/}
                 </div>
                 <InlineDiv>
-                    <Topics userId={ this.props.location.user.id }/>
-                    <Conversations />
+                    <Topics userId={ this.props.currentUser }/>
+                    <Conversations userId={ this.props.currentUser }/>
                 </InlineDiv>
                 <br></br>
                 <JustifiedDiv>

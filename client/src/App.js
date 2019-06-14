@@ -16,44 +16,64 @@ import { DialogueDiv } from './style'
 class App extends Component {
 
   state = {
-    
+
     newUser: {
       username: '',
       password: ''
     },
 
-    currentUser: {},
-    
+    currentUser: {
+      username: '',
+      password: '',
+      UserConversations: [
+        {
+          question: '',
+          answer: '',
+          time: '',
+          username: '',
+        }
+      ],
+      UserTopics: [
+        {
+          subject: '',
+          notes: '',
+          username: ''
+        },
+      ]
+    },
     redirect: false
   }
 
 
   //proceedLogin = (event) => {
-   // this.state.loginInfo.username
+  // this.state.loginInfo.username
 
-    // }
-    // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
+  // }
+  // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
 
-    getUserList = () => {
-      axios.get('api/v1/user').then((res) => {
-        this.setState({ users: res.data })
-        console.log(res.data)
-      })
-    }
+  getUserList = () => {
+    axios.get('api/v1/user').then((res) => {
+      this.setState({ users: res.data })
+      console.log(res.data)
+    })
+  }
 
-    componentDidMount = () => {
-      this.getUserList()
-    }
+  componentDidMount = () => {
+    this.getUserList()
+  }
 
-    setCurrentUser = (currentUser) => {
-      this.setState({ currentUser })
-    }
-    
+  setCurrentUser = (currentUser) => {
+    this.setState({ currentUser })
+  }
+
+
+
 
   render() {
 
-    let showUserLogin = () =>  (<UserLogin setCurrentUser={this.setCurrentUser} />)
-    
+    let showUserLogin = () => (<UserLogin setCurrentUser={this.setCurrentUser} />)
+    let showUserDashboard = () => (<UserDashboard setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} />)
+    let showTalkToAlpha = () => (<TalkToAlpha setCurrentUser={this.setCurrentUser} />)
 
 
     return (
@@ -64,8 +84,8 @@ class App extends Component {
             {<Switch>
               <Route exact path="/" render={showUserLogin} />
               <Route exact path="/About" component={About} />
-              <Route exact path="/UserDashboard/:id" component={UserDashboard} />
-              <Route exact path="/TalkToAlpha" component={TalkToAlpha} />
+              <Route exact path="/UserDashboard/:id" render={showUserDashboard} />
+              <Route exact path="/TalkToAlpha" render={showTalkToAlpha} />
             </Switch>}
           </Router>
         </header>
