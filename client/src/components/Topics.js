@@ -57,14 +57,17 @@ class Topics extends Component {
 
     getTopics = () => {
         axios.get('/api/v1/topics/').then((res) => {
-            this.setState({ topics: res.data })
+            this.setState({ UserTopics: res.data })
+            //console.log(this.state.UserTopics)
         })
     }
 
     componentDidMount() {
         this.getTopics()
-        console.log(this.props.currentUser)
-        console.log(this.state.currentUser.UserTopics)
+        //console.log(this.state.currentUser)
+        this.setState({ currentUser: this.props.currentUser})
+        //console.log(this.props.currentUser.UserTopics)
+        console.log(this.state.currentUser)
     }
 
     handlechange = (event) => {
