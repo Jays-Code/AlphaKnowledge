@@ -11,7 +11,7 @@ import axios from 'axios'
 
 
 class Topics extends Component {
-
+/*
     state = {
         error: '',
         topics: [],
@@ -23,6 +23,36 @@ class Topics extends Component {
         }
 
     }
+    */
+
+   state = {
+    currentUser: {
+      username: '',
+      password: '',
+      UserConversations: [
+        {
+          question: '',
+          answer: '',
+          time: '',
+          username: '',
+        }
+      ],
+      UserTopics: [
+        {
+          subject: '',
+          notes: '',
+          username: ''
+        }
+      ],
+      newTopic: {
+        subject: '',
+        notes: '',
+       // username: 
+    }
+    },
+    redirect: false
+  }
+
 
 
     getTopics = () => {
@@ -33,7 +63,8 @@ class Topics extends Component {
 
     componentDidMount() {
         this.getTopics()
-        console.log(this.state.topics)
+        console.log(this.props.currentUser)
+        console.log(this.state.currentUser.UserTopics)
     }
 
     handlechange = (event) => {
@@ -69,7 +100,7 @@ class Topics extends Component {
         return (
             <div>
                 <h2>Topics</h2>
-                {this.state.topics.map(topic => {
+                {this.state.currentUser.UserTopics.map(topic => {
                     return (
                         <div>
                             <p>{topic.subject}</p>
@@ -85,7 +116,7 @@ class Topics extends Component {
                         input type="text"
                         name="subject"
                         onChange={this.handlechange}
-                        placeholder={this.state.newTopic.subject} 
+                        //placeholder={this.state.newTopic.subject} 
                         />
                     <br></br>
                     <StyledLabel htmlFor="notes">Create notes: </StyledLabel>
@@ -94,7 +125,7 @@ class Topics extends Component {
                         input type="text"
                         name="notes"
                         onChange={this.handleChange}
-                        placeholder={this.state.newTopic.notes} 
+                       //placeholder={this.state.newTopic.notes} 
                         />
                     <button type="submit">Add a new topic</button>
                 </form>

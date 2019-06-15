@@ -9,11 +9,30 @@ import { GenericDiv } from '../style'
 
 
 class Conversations extends Component {
-    /*
-    state = {
-        error: '',
-    }   
-    */
+   
+   state = {
+    currentUser: {
+      username: '',
+      password: '',
+      UserConversations: [
+        {
+          question: '',
+          answer: '',
+          time: '',
+          username: '',
+        }
+      ],
+      UserTopics: [
+        {
+          subject: '',
+          notes: '',
+          username: ''
+        },
+      ]
+    },
+    redirect: false
+  }
+
 
 
     render() {

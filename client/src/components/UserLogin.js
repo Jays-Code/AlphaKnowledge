@@ -14,7 +14,8 @@ class UserLogin extends React.Component {
     state = {
         loginInfo: {
             username: ''
-        }
+        },
+        redirect: false
 
     }
 
@@ -31,10 +32,12 @@ class UserLogin extends React.Component {
          console.log(this.state.loginInfo.username)
          axios.get(`api/v1/user/username/${this.state.loginInfo.username}`).then(res => {
             this.props.setCurrentUser( res.data )
+        }).then(res => {
+            this.setState({redirect: true})
         })
     }
 
-    
+
     // }
 
 
@@ -109,17 +112,18 @@ class UserLogin extends React.Component {
         }
     */
     render() {
-
+        
         if (this.state.redirect) {
             return <Redirect to='/userdashboard/:id' />;
         }
         return (
             <div>
+                <h2>Login with a user</h2>
                 <div>
                     {/*
                 }
                 <div>
-                    <h2>Login with a user</h2>
+                    
                     {this.state.users.map((user, index) => {
                         return (
                             <div key={index}>
