@@ -67,7 +67,7 @@ class Topics extends Component {
         //console.log(this.state.currentUser)
         this.setState({ currentUser: this.props.currentUser})
         //console.log(this.props.currentUser.UserTopics)
-        console.log(this.state.currentUser)
+        //console.log(this.state.currentUser)
     }
 
     handlechange = (event) => {
