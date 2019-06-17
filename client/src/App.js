@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import TalkToAlpha from "./components/TalkToAlpha";
 import About from "./components/About"
 import UserDashboard from "./components/UserDashboard"
+import TopicId from "./components/TopicId"
 import { DialogueDiv } from './style'
 //import './App.css';
 
@@ -71,12 +72,13 @@ class App extends Component {
 
   render() {
 
-    let showUserLogin = () => (<UserLogin setCurrentUser={this.setCurrentUser} />)
-    let showUserDashboard = () => (<UserDashboard setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} />)
-    let showTalkToAlpha = () => (<TalkToAlpha setCurrentUser={this.setCurrentUser} />)
-
+    let showUserLogin = () => (<UserLogin setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/>)
+    let showUserDashboard = () => (<UserDashboard currentUser={this.state.currentUser} />)
+    let showTalkToAlpha = () => (<TalkToAlpha currentUser={this.state.currentUser}/>)
+    let showUserTopic = ({match}) => (<TopicId id = {match.params} topicId currentUser = {this.state.currentUser}/>)
 
     return (
+      
       <div className="App">
         <header className="App-header">
           <Router>
@@ -85,6 +87,7 @@ class App extends Component {
               <Route exact path="/" render={showUserLogin} />
               <Route exact path="/About" component={About} />
               <Route exact path="/UserDashboard/:id" render={showUserDashboard} />
+              <Route exact path="/UserDashboard/:id/:topicId" render={showUserTopic} />
               <Route exact path="/TalkToAlpha" render={showTalkToAlpha} />
             </Switch>}
           </Router>

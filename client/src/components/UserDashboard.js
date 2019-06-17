@@ -14,27 +14,23 @@ import Conversations from '../components/Conversations'
 import Topics from '../components/Topics'
 
 
-
-
-
-
 class UserDashboard extends Component {
-    
+
     state = {
         //error: '',
         redirect: false
-    }   
-    
-  
-   deleteUser = () => {
-    axios.delete(`/api/v1/user/${this.props.currentUser.id}`)
-    .then(() => this.setState({ redirect: true }));
-    
-}
+    }
+
+
+    deleteUser = () => {
+        axios.delete(`/api/v1/user/${this.props.currentUser.id}`)
+            .then(() => this.setState({ redirect: true }));
+
+    }
 
 
     render() {
-        
+
         console.log(this.props.currentUser.id);
         return (
             <div>
@@ -46,8 +42,8 @@ class UserDashboard extends Component {
                     <DialogueDiv><Link to="/topics">Topics</Link></DialogueDiv>*/}
                 </div>
                 <InlineDiv>
-                    <Topics currentUser={ this.props.currentUser }/>
-                    <Conversations currentUser={ this.props.currentUser }/>
+                    <Topics currentUser={this.props.currentUser} />
+                    <Conversations currentUser={this.props.currentUser} />
                 </InlineDiv>
                 <br></br>
                 <JustifiedDiv>

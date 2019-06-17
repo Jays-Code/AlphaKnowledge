@@ -6,6 +6,7 @@ import { StyledScrollbox } from '../style'
 import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
+import { StyledLink } from '../style'
 import axios from 'axios'
 
 
@@ -64,12 +65,10 @@ class Topics extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.currentUser.userId)
+        //console.log(this.props.currentUser.id)
         this.getTopics()
-        //console.log(this.state.currentUser)
         this.setState({ currentUser: this.props.currentUser })
         //console.log(this.props.currentUser.UserTopics)
-        //console.log(this.state.currentUser)
     }
 
     handlechange = (event) => {
@@ -106,11 +105,11 @@ class Topics extends Component {
         return (
             <div>
                 <h2>Topics</h2>
-                {this.state.currentUser.UserTopics.map(topic => {
+                {this.state.currentUser.UserTopics.map((topic,i) => {
                     return (
-                        <div>
-                            <p>{topic.subject}</p>
-                            <p>{topic.notes}</p>
+                        <div key= {i}>
+                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/${topic.id}`}>{topic.subject}</StyledLink>
+                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/${topic.id}`}>{topic.notes}</StyledLink>
                         </div>
 
                     )
