@@ -31,7 +31,7 @@ class UserDashboard extends Component {
 
     render() {
 
-        console.log(this.props.currentUser.id);
+        //console.log(this.props.currentUser.id);
         return (
             <div>
                 <div>

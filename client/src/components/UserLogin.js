@@ -66,7 +66,7 @@ class UserLogin extends React.Component {
 
 
     render() {
-        console.log("from userLogin", this.props.currentUser.id)
+        //console.log("from userLogin", this.props.currentUser.id)
         if (this.state.redirect) {
             return <Redirect to={`/userdashboard/${this.props.currentUser.username}`}/>;
         }
