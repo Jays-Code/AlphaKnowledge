@@ -4,7 +4,9 @@ from .serializers import UserSerializer, ConversationsSerializer, TopicsSerializ
 from .models import User, Conversations, Topics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
+from django.http import HttpResponse, HttpRequest
+import json
+from .conversationalApi import wolframResponse
 # Create your views here.
 
 @api_view(['GET', 'POST', ])
@@ -26,3 +28,9 @@ class ConversationsView(viewsets.ModelViewSet):
 class TopicsView(viewsets.ModelViewSet):
     queryset = Topics.objects.all()
     serializer_class = TopicsSerializer
+
+def wolframCall(request):
+    wolf = wolframResponse
+    wolfdata = json.dumps(wolf)
+    print(wolfdata)
+    return HttpResponse(wolfdata)

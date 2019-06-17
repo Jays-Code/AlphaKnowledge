@@ -12,4 +12,5 @@ router.register('topics', views.TopicsView)
 urlpatterns = [
     path ('', include(router.urls)),
     path('user/username/<str:uname>', views.username, name='username'),
+    path('wolfram/', views.wolframCall)
 ]
