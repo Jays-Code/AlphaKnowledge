@@ -11,47 +11,48 @@ import axios from 'axios'
 
 
 class Topics extends Component {
-/*
-    state = {
-        error: '',
-        topics: [],
+    /*
+        state = {
+            error: '',
+            topics: [],
+    
+            newTopic: {
+                subject: '',
+                notes: '',
+               // username: 
+            }
+    
+        }
+        */
 
+    state = {
+        currentUser: {
+            username: '',
+            password: '',
+            UserConversations: [
+                {
+                    question: '',
+                    answer: '',
+                    time: '',
+                    username: '',
+                }
+            ],
+            UserTopics: [
+                {
+                    subject: '',
+                    notes: '',
+                    username: ''
+                }
+            ],
+
+        },
         newTopic: {
             subject: '',
             notes: '',
-           // username: 
-        }
-
+            // username: 
+        },
+        redirect: false
     }
-    */
-
-   state = {
-    currentUser: {
-      username: '',
-      password: '',
-      UserConversations: [
-        {
-          question: '',
-          answer: '',
-          time: '',
-          username: '',
-        }
-      ],
-      UserTopics: [
-        {
-          subject: '',
-          notes: '',
-          username: ''
-        }
-      ],
-      newTopic: {
-        subject: '',
-        notes: '',
-       // username: 
-    }
-    },
-    redirect: false
-  }
 
 
 
@@ -63,9 +64,10 @@ class Topics extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.currentUser.userId)
         this.getTopics()
         //console.log(this.state.currentUser)
-        this.setState({ currentUser: this.props.currentUser})
+        this.setState({ currentUser: this.props.currentUser })
         //console.log(this.props.currentUser.UserTopics)
         //console.log(this.state.currentUser)
     }
@@ -78,28 +80,29 @@ class Topics extends Component {
 
     createTopic = (event) => {
         event.preventDefault()
+
         axios.post('/api/v1/topics/', {
             subject: this.state.newTopic.subject,
             notes: this.state.newTopic.notes,
-            userId: this.props.userId
+            userId: this.props.currentUser.id
         })
             .then(res => {
-                const topicList = [...this.state.topics]
-                topicList.unshift(res.data)
+                this.getTopics()
+                // const topicList = [...this.state.topics]
+                // topicList.unshift(res.data)
                 this.setState({
                     newTopic: {
                         subject: '',
                         notes: ''
-                    },
-                    topics: topicList
+                    }
                 })
             })
-        this.getTopics()
+
     }
 
 
     render() {
-     
+
         return (
             <div>
                 <h2>Topics</h2>
@@ -119,17 +122,17 @@ class Topics extends Component {
                         input type="text"
                         name="subject"
                         onChange={this.handlechange}
-                        //placeholder={this.state.newTopic.subject} 
-                        />
+                    //placeholder={this.state.newTopic.subject} 
+                    />
                     <br></br>
                     <StyledLabel htmlFor="notes">Create notes: </StyledLabel>
                     <input
                         id="notes"
                         input type="text"
                         name="notes"
-                        onChange={this.handleChange}
-                       //placeholder={this.state.newTopic.notes} 
-                        />
+                        onChange={this.handlechange}
+                    //placeholder={this.state.newTopic.notes} 
+                    />
                     <button type="submit">Add a new topic</button>
                 </form>
             </div>

@@ -37,7 +37,7 @@ class UserLogin extends React.Component {
 
     proceedLogin = (event) => {
         event.preventDefault()
-        console.log(this.state.loginInfo.loginUsername)
+        //console.log(this.state.loginInfo.loginUsername)
         axios.get(`api/v1/user/username/${this.state.loginInfo.loginUsername}`).then(res => {
             this.props.setCurrentUser(res.data)
         }).then(res => {
