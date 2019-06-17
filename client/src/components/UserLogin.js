@@ -13,106 +13,60 @@ class UserLogin extends React.Component {
 
     state = {
         loginInfo: {
-            username: ''
+            loginUsername: ''
+        },
+        newUser: {
+            username: '',
+            password: ''
         },
         redirect: false
-
     }
 
-    handleChange = (event) => {
+    handleChangeLogin = (event) => {
         const cloneLoggedUser = { ...this.state.loginInfo }
         cloneLoggedUser[event.target.name] = event.target.value
         this.setState({ loginInfo: cloneLoggedUser })
-
+    
+    }
+    
+    handleChangeNewUser = (event) => {
+        const cloneNewUser = {...this.state.newUser }
+        cloneNewUser[event.target.name] = event.target.value
+        this.setState({ newUser: cloneNewUser})
     }
 
-
-     proceedLogin = (event) => {
-         event.preventDefault()
-         console.log(this.state.loginInfo.username)
-         axios.get(`api/v1/user/username/${this.state.loginInfo.username}`).then(res => {
-            this.props.setCurrentUser( res.data )
+    proceedLogin = (event) => {
+        event.preventDefault()
+        console.log(this.state.loginInfo.loginUsername)
+        axios.get(`api/v1/user/username/${this.state.loginInfo.loginUsername}`).then(res => {
+            this.props.setCurrentUser(res.data)
         }).then(res => {
-            this.setState({redirect: true})
+            this.setState({ redirect: true })
+        })
+    }
+
+    createUser = (event) => {
+        event.preventDefault()
+        axios.post('api/v1/user/', {
+            username: this.state.newUser.username,
+            password: this.state.newUser.password
+        }).then(res => {
+           // const usersList = [...this.state.users]
+           // usersList.unshift(res.data)
+            this.setState({
+                newUser: {
+                    username: '',
+                    password: ''
+                },
+               // users: usersList
+            })
+
         })
     }
 
 
-    // }
-
-
-    /*
-    state = {
-        users: [],
-
-        newUser: {
-            //username: '',
-            //password: ''
-        //},
-
-        loginInfo: {
-            username: '',
-            //password: ''
-        },
-        redirect: false
-    }
-    */
-    /*
-        createUser = (event) => {
-            event.preventDefault()
-            axios.post('api/v1/user/', {
-              username: this.state.newUser.username,
-              password: this.state.newUser.password
-            }).then(res => {
-              const usersList = [...this.state.users]
-              usersList.unshift(res.data)
-              this.setState({
-                newUser: {
-                  name: '',
-                  password: ''
-                },
-                users: usersList
-              })
-      
-            })
-          }
-    */
-
-
-    // set state of redirect to true with --  .then(() => this.setState({ redirect: true}))
-    /*
-        getUserList = () => {
-            axios.get('api/v1/user').then(res => {
-                this.setState({ users: res.data })
-            })
-        }
-    
-        componentDidMount = () => {
-            this.getUserList()
-        }
-    
-        createUser = (event) => {
-            event.preventDefault()
-            axios.post('api/v1/user/', {
-                username: this.state.newUser.username,
-                password: this.state.newUser.password
-            }).then(res => {
-                const usersList = [...this.state.users]
-                usersList.unshift(res.data)
-                this.setState({
-                    newUser: {
-                        name: '',
-                        password: ''
-                    },
-                    users: usersList
-                })
-    
-            })
-    
-        }
-    */
     render() {
-        
+
         if (this.state.redirect) {
             return <Redirect to='/userdashboard/:id' />;
         }
@@ -139,11 +93,11 @@ class UserLogin extends React.Component {
                         <div>
                             <StyledLabel htmlFor="username">Username: </StyledLabel>
                             <input
-                                id="username"
+                                id="loginUsername"
                                 type="text"
-                                name="username"
-                                onChange={this.handleChange}
-                                placeholder={this.state.loginInfo.username}
+                                name="loginUsername"
+                                onChange={this.handleChangeLogin}
+                                placeholder={this.state.loginInfo.loginUsername}
                             />
                         </div>
                         <div>
@@ -155,7 +109,7 @@ class UserLogin extends React.Component {
 
 
 
-                {/*
+                
                 <div>
                     <h2>Create a new user</h2>
                     <form onSubmit={this.createUser} >
@@ -164,7 +118,7 @@ class UserLogin extends React.Component {
                             id="username"
                             input type="text"
                             name="username"
-                            onChange={this.handlechange}
+                            onChange={this.handleChangeNewUser}
                             placeholder={this.state.newUser.username}
                         />
                         <br></br>
@@ -174,21 +128,21 @@ class UserLogin extends React.Component {
                             id="password"
                             input type="text"
                             name="password"
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeNewUser}
                             placeholder={this.state.newUser.password}
                         />
 
                         <button type="submit">Create</button>
                     </form>
                 </div>
-                 */}
+                 
             </div>
-            
-                )
-               
-            }
-        
-        
-        }
-        
+
+        )
+
+    }
+
+
+}
+
 export default UserLogin;
