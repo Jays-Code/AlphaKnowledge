@@ -8,6 +8,7 @@ import TalkToAlpha from "./components/TalkToAlpha";
 import About from "./components/About"
 import UserDashboard from "./components/UserDashboard"
 import TopicId from "./components/TopicId"
+import ConversationId from "./components/ConversationId"
 import { DialogueDiv } from './style'
 //import './App.css';
 
@@ -76,6 +77,7 @@ class App extends Component {
     let showUserDashboard = () => (<UserDashboard currentUser={this.state.currentUser} />)
     let showTalkToAlpha = () => (<TalkToAlpha currentUser={this.state.currentUser}/>)
     let showUserTopic = ({match}) => (<TopicId id = {match.params} topicId currentUser = {this.state.currentUser}/>)
+    let showUserConversation = ({match}) => (<ConversationId id = {match.params} conversationId currentUser = {this.state.currentUser}/>)
 
     return (
       
@@ -87,7 +89,8 @@ class App extends Component {
               <Route exact path="/" render={showUserLogin} />
               <Route exact path="/About" component={About} />
               <Route exact path="/UserDashboard/:id" render={showUserDashboard} />
-              <Route exact path="/UserDashboard/:id/:topicId" render={showUserTopic} />
+              <Route exact path="/UserDashboard/:id/topic/:topicId" render={showUserTopic} />
+              <Route exact path="/UserDashboard/:id/conversation/:conversationId" render={showUserConversation} />
               <Route exact path="/TalkToAlpha" render={showTalkToAlpha} />
             </Switch>}
           </Router>

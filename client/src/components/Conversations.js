@@ -98,8 +98,8 @@ class Conversations extends Component {
                 {this.state.currentUser.UserConversations.map((conversation,i) => {
                     return (
                         <div key= {i}>
-                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/${conversation.id}`}>{conversation.question}</StyledLink>
-                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/${conversation.id}`}>{conversation.answer}</StyledLink>
+                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/conversation/${conversation.id}`}>{conversation.question}</StyledLink>
+                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/conversation/${conversation.id}`}>{conversation.answer}</StyledLink>
                         </div>
 
                     )
