@@ -124,6 +124,8 @@ class Conversations extends Component {
                         onChange={this.handlechange}
                     //placeholder={this.state.newTopic.notes} 
                     />
+                     <br></br>
+                     <br></br>
                     <button type="submit">Add a new conversation</button>
                 </form>
             </div>

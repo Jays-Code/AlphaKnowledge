@@ -14,11 +14,15 @@ class Navbar extends Component {
     margin: 
     text-align: left;
     Link:hover, a:active, a:visited { color: orange; }
+    display: flex;
+    justify-content: space-around;
+
     `
     
     const StyledLink = styled(Link)`
     float: right;
     text-align: right;
+    
     `
 
    
@@ -26,7 +30,7 @@ class Navbar extends Component {
     return (
       <StyledDiv>
           <Link to = "/">Login</Link>
-          <StyledLink to = "/UserDashboard/:id">User Dashboard</StyledLink>
+          <StyledLink to = "/UserDashboard/:id">My Dashboard</StyledLink>
           <StyledLink to = "/About">About</StyledLink>
       </StyledDiv>
     );

@@ -114,6 +114,7 @@ class Topics extends Component {
                     )
                 })}
                 <br></br>
+                <br></br>
                 <form onSubmit={this.createTopic} >
                     <StyledLabel htmlFor="subject">Create a subject: </StyledLabel>
                     <input
@@ -124,7 +125,7 @@ class Topics extends Component {
                     //placeholder={this.state.newTopic.subject} 
                     />
                     <br></br>
-                    <StyledLabel htmlFor="notes">Create notes: </StyledLabel>
+                    <StyledLabel htmlFor="notes">Include a note:  </StyledLabel>
                     <input
                         id="notes"
                         input type="text"
@@ -132,6 +133,8 @@ class Topics extends Component {
                         onChange={this.handlechange}
                     //placeholder={this.state.newTopic.notes} 
                     />
+                     <br></br>
+                     <br></br>
                     <button type="submit">Add a new topic</button>
                 </form>
             </div>
