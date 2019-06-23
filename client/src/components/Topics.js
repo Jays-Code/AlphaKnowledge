@@ -109,11 +109,11 @@ class Topics extends Component {
                     return (
                         <div key= {i}>
                             <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/topic/${topic.id}`}>{topic.subject}</StyledLink>
-                            <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/topic/${topic.id}`}>{topic.notes}</StyledLink>
                         </div>
 
                     )
                 })}
+                <br></br>
                 <form onSubmit={this.createTopic} >
                     <StyledLabel htmlFor="subject">Create a subject: </StyledLabel>
                     <input

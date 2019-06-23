@@ -38,7 +38,7 @@ class UserDashboard extends Component {
             <div>
                 <div>
                     <JustifiedDiv>
-                        <h1>User Dashboard</h1>
+                        <h1>{this.props.currentUser.username}'s Dashboard</h1>
                     </JustifiedDiv>
                     {/*</div> <DialogueDiv><Link to="/conversations">Conversations</Link></DialogueDiv>
                     <DialogueDiv><Link to="/topics">Topics</Link></DialogueDiv>*/}

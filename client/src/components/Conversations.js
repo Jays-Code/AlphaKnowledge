@@ -99,11 +99,13 @@ class Conversations extends Component {
                     return (
                         <div key= {i}>
                             <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/conversation/${conversation.id}`}>{conversation.question}</StyledLink>
+                            <br></br>
                             <StyledLink to = {`/userdashboard/${this.props.currentUser.username}/conversation/${conversation.id}`}>{conversation.answer}</StyledLink>
                         </div>
 
                     )
                 })}
+                <br></br>
                 <form onSubmit={this.createConversation} >
                     <StyledLabel htmlFor="question">Create a question: </StyledLabel>
                     <input

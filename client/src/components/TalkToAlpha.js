@@ -7,6 +7,7 @@ import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
 import axios from 'axios'
+//import i from '../../../AlphaKnowledge_app/conversationalApi.py'
 
 
 
@@ -31,6 +32,7 @@ class TalkToAlpha extends Component {
         }
 
     render() {
+        //console.log(i)
         return (
             <DialogueDiv>
                 <h2>Ask Away!</h2>
