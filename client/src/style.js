@@ -53,5 +53,13 @@ export const InlineDiv = styled.div`
 display: flex;
 justify-content: center;
 background: #b81239
-border: solid black;
+border: solid black 1vw;
+//margin:200px auto; 
+padding: 5vw 23vh;
+justify-content: space-between;
+`
+
+export const TalkToWolfDiv = styled.div`
+//padding: 1vw 100vh;
+//background: #b81239
 `

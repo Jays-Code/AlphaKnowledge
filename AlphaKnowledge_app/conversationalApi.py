@@ -2,6 +2,7 @@ import requests
 from decouple import config
 
 
+
 key = config('appid')
 i = "What is the diameter of earth?"
 

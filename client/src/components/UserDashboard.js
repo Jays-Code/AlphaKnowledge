@@ -10,8 +10,10 @@ import { StyledButton } from '../style'
 import { JustifiedDiv } from '../style'
 import { InlineDiv } from '../style'
 import { StyledLink } from '../style'
+import { TalkToWolfDiv } from '../style' 
 import Conversations from '../components/Conversations'
 import Topics from '../components/Topics'
+
 
 
 class UserDashboard extends Component {
@@ -47,7 +49,9 @@ class UserDashboard extends Component {
                 </InlineDiv>
                 <br></br>
                 <JustifiedDiv>
-                    <StyledLink to="/TalkToAlpha">Talk to Alpha!</StyledLink>
+                    <TalkToWolfDiv>
+                        <StyledLink to="/TalkToAlpha">Talk to Alpha!</StyledLink>
+                    </TalkToWolfDiv>
                 </JustifiedDiv>
                 <JustifiedDiv>
                     <StyledButton onClick={this.deleteUser}>Delete this User</StyledButton>
