@@ -29,6 +29,7 @@ class TalkToAlpha extends Component {
     
         componentDidMount = () => {
             this.talkToWolfram()
+            //console.log(i)
         }
 
     render() {
