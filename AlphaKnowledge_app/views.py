@@ -7,7 +7,8 @@ from rest_framework.decorators import api_view
 from django.http import HttpResponse, HttpRequest
 import json
 from .conversationalApi import wolframResponse
-from .conversationalApi import i
+# from .conversationalApi import i
+from .conversationalApi import payload
 # Create your views here.
 
 @api_view(['GET', 'POST', ])
@@ -30,10 +31,11 @@ class TopicsView(viewsets.ModelViewSet):
     queryset = Topics.objects.all()
     serializer_class = TopicsSerializer
 
-def wolframCall(request):
-    questionAsked = i
-    print(questionAsked)
+def wolframCall(request, askedQuestion):
+    # questionAsked = i
+    print("the question asked was: ", askedQuestion)
     wolf = wolframResponse
+    askedQuestion = payload
     wolfdata = json.dumps(wolf)
     print(wolfdata)
     return HttpResponse(wolfdata)

@@ -14,37 +14,60 @@ import axios from 'axios'
 class TalkToAlpha extends Component {
     
     state = {
+        questionAsked: '',
         wolfResponse: {
             result: ''
         },
         //userResponse: '',
-    }   
+    }
+    /*
+    componentDidMount = () => {
+       
+    }
+    */
     
 
-    talkToWolfram = () => {
+    talkToWolfram = (event, askedQuestion) => {
+        this.state.questionAsked
+        const askedQuestion = this.state.questionAsked
+        event.preventDefault()
+        //this.setState({questionAsked: askedQuestion})
+        console.log(askedQuestion)
+        
         axios.get('/api/v1/wolfram/').then((res) => {
             this.setState({wolfResponse: res.data})
         }
         )}
     
-        componentDidMount = () => {
-            this.talkToWolfram()
-            //console.log(i)
-        }
+    handlechange = (event) => {
+        const cloneQuestionAsked = { ...this.state.questionAsked }
+        cloneQuestionAsked[event.target.name] = event.target.value
+        this.setState({ questionAsked: cloneQuestionAsked })
+        //console.log(this.state.questionAsked)
+    }
+
+        
+    
+        
 
     render() {
+        
+        console.log(askedQuestion)
         //console.log(i)
+        
         return (
             <DialogueDiv>
-                <h2>Ask Away!</h2>
-                <form>
+                <h2>Ask away!</h2>
+                <form onSubmit={this.talkToWolfram}>
                 <span>Enter your question: </span>
                 <input id = "question" 
                 input type = "text" 
                 name= "question"
+                onChange={this.handlechange}
                 placeholder = "What is the diameter of the earth?">
                     
                 </input>
+                <button type="submit">Ask Alpha</button>
                 </form>
                 <br></br>
                 <StyledScrollbox>{this.state.wolfResponse.result}</StyledScrollbox>
