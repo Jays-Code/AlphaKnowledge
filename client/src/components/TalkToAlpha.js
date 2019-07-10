@@ -37,7 +37,8 @@ class TalkToAlpha extends Component {
         let question = Object.values(this.state.questionAsked)
         console.log(question)
         
-        axios.get(`/api/v1/wolfram/${question}`).then((res) => {
+        //UNCOMMENT THIS LINE, DELETE NEXT LINE: axios.get(`/api/v1/wolfram/${question}`).then((res) => {
+        axios.get(`/api/v1/wolfram/`).then((res) => {
             console.log(res.data)
             this.setState({wolfResponse: res.data})
         }

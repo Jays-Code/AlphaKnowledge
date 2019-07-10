@@ -14,5 +14,5 @@ urlpatterns = [
     path ('', include(router.urls)),
     path('user/username/<str:uname>', views.username, name='username'),
     #re_path(r'^wolfram/', views.wolframCall)
-    path('wolfram/<str:questionAsked>', views.wolframCall, name='questionAsked')
+    path('wolfram/', views.wolframCall)
 ]
