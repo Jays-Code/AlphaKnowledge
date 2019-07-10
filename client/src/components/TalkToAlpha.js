@@ -27,17 +27,23 @@ class TalkToAlpha extends Component {
     */
     
 
-    talkToWolfram = (event, askedQuestion) => {
-        this.state.questionAsked
-        const askedQuestion = this.state.questionAsked
+    talkToWolfram = (event) => {
+        //this.state.questionAsked
+        //const askedQuestion = this.state.questionAsked
         event.preventDefault()
         //this.setState({questionAsked: askedQuestion})
-        console.log(askedQuestion)
+        //console.log(askedQuestion)
+        //console.log(this.state.questionAsked)
+        let question = Object.values(this.state.questionAsked)
+        console.log(question)
         
-        axios.get('/api/v1/wolfram/').then((res) => {
+        axios.get(`/api/v1/wolfram/${question}`).then((res) => {
+            console.log(res.data)
             this.setState({wolfResponse: res.data})
         }
-        )}
+        ).catch((error) => { 
+            console.log(error)
+        })}
     
     handlechange = (event) => {
         const cloneQuestionAsked = { ...this.state.questionAsked }
@@ -52,7 +58,7 @@ class TalkToAlpha extends Component {
 
     render() {
         
-        console.log(askedQuestion)
+        //console.log(askedQuestion)
         //console.log(i)
         
         return (
