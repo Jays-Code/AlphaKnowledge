@@ -12,7 +12,7 @@ router.register('topics', views.TopicsView)
 
 urlpatterns = [
     path ('', include(router.urls)),
-    path('user/username/<str:uname>', views.username, name='username'),
+    path('user/username/<str:uname>', views.username, name='username'), #What is this name referring to?
     #re_path(r'^wolfram/', views.wolframCall)
-    path('wolfram/', views.wolframCall)
+    path('wolfram/<str:question>', views.wolframCall)
 ]

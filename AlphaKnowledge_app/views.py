@@ -34,9 +34,10 @@ class TopicsView(viewsets.ModelViewSet):
     serializer_class = TopicsSerializer
 
 #@api_view(['GET'])
-#def wolframCall(request, qustionAsked):
-def wolframCall(request):
-    #print("the question asked was: ", questionAsked)
+#def wolframCall(request):
+def wolframCall(request, question):
+    questionAsked = question
+    print("the question asked was: ", questionAsked)
     wolf = wolframResponse
     wolfdata = json.dumps(wolf)
     print(wolfdata)
