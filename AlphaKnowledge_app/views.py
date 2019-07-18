@@ -33,35 +33,20 @@ class TopicsView(viewsets.ModelViewSet):
     queryset = Topics.objects.all()
     serializer_class = TopicsSerializer
 
-#@api_view(['GET'])
-#def wolframCall(request):
 def wolframCall(request, question):
     questionAsked = question
     print("the question asked was: ", questionAsked)
     key = config('appid')
     r = requests.get(f'http://api.wolframalpha.com/v1/conversation.jsp?appid='+ key + '&i='+ questionAsked)
-    #r = requests.get(f'http://api.wolframalpha.com/v1/conversation.jsp?appid='+ key + '&i='+ '{questionAsked}')
     wolframResponse = r.json()
     wolf = wolframResponse
     wolfdata = json.dumps(wolf)
     print(wolfdata)
     
-
-    #i = "What is the diameter of earth?"
-    #static hardcoded question:   r = requests.get(f'http://api.wolframalpha.com/v1/conversation.jsp?appid='+ key + '&i='+ i)
-
     
-   
-
-
-
-
     print("URL string requested is displayed below")
     print(r.url)
    
-
-    #print(questionAsked)
-
     print(r.json())
         
     return HttpResponse(wolfdata)
