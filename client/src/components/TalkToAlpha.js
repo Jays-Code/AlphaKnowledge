@@ -7,12 +7,21 @@ import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
 import axios from 'axios'
+import { blueForTalk } from '../images/blueForTalk.gif'
+
+const BlueForTalkBackground = styled.div`
+background-image: url('https://i.pinimg.com/originals/f1/c4/ec/f1c4ec121473b973c00c25893f569d3c.gif')
+
+`
+
+
+
 //import i from '../../../AlphaKnowledge_app/conversationalApi.py'
 
 
 
 class TalkToAlpha extends Component {
-    
+
     state = {
         questionAsked: '',
         wolfResponse: {
@@ -25,7 +34,7 @@ class TalkToAlpha extends Component {
        
     }
     */
-    
+
 
     talkToWolfram = (event) => {
         //this.state.questionAsked
@@ -36,16 +45,17 @@ class TalkToAlpha extends Component {
         //console.log(this.state.questionAsked)
         let question = Object.values(this.state.questionAsked)
         console.log(question)
-        
+
         //UNCOMMENT THIS LINE, DELETE NEXT LINE: axios.get(`/api/v1/wolfram/${question}`).then((res) => {
         axios.get(`/api/v1/wolfram/${question}`).then((res) => {
             console.log(res.data)
-            this.setState({wolfResponse: res.data})
+            this.setState({ wolfResponse: res.data })
         }
-        ).catch((error) => { 
+        ).catch((error) => {
             console.log(error)
-        })}
-    
+        })
+    }
+
     handlechange = (event) => {
         const cloneQuestionAsked = { ...this.state.questionAsked }
         cloneQuestionAsked[event.target.name] = event.target.value
@@ -53,33 +63,36 @@ class TalkToAlpha extends Component {
         //console.log(this.state.questionAsked)
     }
 
-        
-    
-        
+
+
+
 
     render() {
-        
+
         //console.log(askedQuestion)
         //console.log(i)
-        
-        return (
-            <DialogueDiv>
-                <h2>Ask away!</h2>
-                <form onSubmit={this.talkToWolfram}>
-                <span>Enter your question: </span>
-                <input id = "question" 
-                input type = "text" 
-                name= "question"
-                onChange={this.handlechange}
-                placeholder = "What is the diameter of the earth?">
-                    
-                </input>
-                <button type="submit">Ask Alpha</button>
-                </form>
-                <br></br>
-                <StyledScrollbox>{this.state.wolfResponse.result}</StyledScrollbox>
 
-            </DialogueDiv>
+        return (
+           
+                <DialogueDiv>
+
+                    <h2>Ask away!</h2>
+                    <form onSubmit={this.talkToWolfram}>
+                        <span>Enter your question: </span>
+                        <input id="question"
+                            input type="text"
+                            name="question"
+                            onChange={this.handlechange}
+                            placeholder="What is the diameter of the earth?">
+
+                        </input>
+                        <button type="submit">Ask Alpha</button>
+                    </form>
+                    <br></br>
+                    <StyledScrollbox>{this.state.wolfResponse.result}</StyledScrollbox>
+
+                </DialogueDiv>
+           
 
         )
     }

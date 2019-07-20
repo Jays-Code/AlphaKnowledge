@@ -63,3 +63,7 @@ export const TalkToWolfDiv = styled.div`
 //padding: 1vw 100vh;
 //background: #b81239
 `
+
+
+
+

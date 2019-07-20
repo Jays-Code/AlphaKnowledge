@@ -79,7 +79,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        
     },
+    
 ]
 
 WSGI_APPLICATION = 'AlphaKnowledge_project.wsgi.application'
