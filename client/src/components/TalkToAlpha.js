@@ -7,11 +7,12 @@ import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
 import axios from 'axios'
-import { blueForTalk } from '../images/blueForTalk.gif'
+import blueForTalk from '../images/blueForTalk.gif'
 
 const BlueForTalkBackground = styled.div`
-background-image: url('https://i.pinimg.com/originals/f1/c4/ec/f1c4ec121473b973c00c25893f569d3c.gif')
-
+background-image: url(${blueForTalk});
+height: 100vh;
+width: 100vw
 `
 
 
@@ -73,8 +74,9 @@ class TalkToAlpha extends Component {
         //console.log(i)
 
         return (
-           
+            <BlueForTalkBackground>
                 <DialogueDiv>
+                    
 
                     <h2>Ask away!</h2>
                     <form onSubmit={this.talkToWolfram}>
@@ -92,7 +94,7 @@ class TalkToAlpha extends Component {
                     <StyledScrollbox>{this.state.wolfResponse.result}</StyledScrollbox>
 
                 </DialogueDiv>
-           
+            </BlueForTalkBackground>
 
         )
     }
