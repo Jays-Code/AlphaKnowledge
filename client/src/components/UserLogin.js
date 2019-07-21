@@ -11,11 +11,12 @@ import Particles from 'react-particles-js'
 import blueForTalk from '../images/blueForTalk.gif'
 
 const PinkBlueGradient = styled.div`
-//background: rgb(2,0,36);
 //background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,0.6895351890756303) 37%, rgba(0,212,255,1) 100%);
 background: linear-gradient(to right, rgb(203, 52, 181), rgb(68, 166, 187));
-height:100vh;
-width:100vw
+//height:100vh;
+//width:100vw;
+//position: absolute;
+z-index:1;
 `
 class UserLogin extends React.Component {
 
@@ -80,26 +81,9 @@ class UserLogin extends React.Component {
         }
         return (
             <PinkBlueGradient>
+                
                 <DialogueDiv>
-                    <Particles
-                        params={{
-                            particles: {
-                                number: {
-                                    value: 40
-                                },
-                                line_linked: {
-                                    shadow: {
-                                        enable: true,
-                                        color: "#3CJ9D1",
-                                        blur: 5
-                                    }
-                                }
-                            }
-                        }}
-                        style={{
-                            width: '100%',
-                        }}
-                    />
+                    
                     <h2>Login with a user</h2>
                     
                         {/*
@@ -163,7 +147,27 @@ class UserLogin extends React.Component {
                             <button type="submit">Create</button>
                         </form>
                     </div>
+                    
                 </DialogueDiv>
+                <Particles
+                        params={{
+                            particles: {
+                                number: {
+                                    value: 40
+                                },
+                                line_linked: {
+                                    shadow: {
+                                        enable: true,
+                                        color: "#3CJ9D1",
+                                        blur: 5
+                                    }
+                                }
+                            }
+                        }}
+                        style={{
+                            width: '100%',
+                        }}
+                    />
             </PinkBlueGradient>
 
 

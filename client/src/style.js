@@ -34,7 +34,9 @@ export const DialogueDiv = styled.div`
 //background:white;
 text-align: center;
 border: solid black;
-//z-index:5
+position: absolute;
+margin: auto;
+z-index:5;
 color:red;
 `
 
