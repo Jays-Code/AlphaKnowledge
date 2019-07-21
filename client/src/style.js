@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
+export const Wrapper = styled.div`
+text-align:center;
+`
+
 
 export const StyledLink = styled(Link)`
 text-decoration: none;
@@ -25,19 +29,19 @@ export const StyledScrollbox = styled.div`
 height:20vh;
 width:50vw;
 overflow:scroll;
-border:9px inset orange;
+border:9px inset #b81239;
 position: relative;
 margin: auto;
 background:white;
 `
 export const DialogueDiv = styled.div`
-//background:white;
+background:silver;
 text-align: center;
 border: solid black;
 position: absolute;
 margin: auto;
 z-index:5;
-color:red;
+color:#b81239;
 `
 
 export const GenericDiv = styled.div`
