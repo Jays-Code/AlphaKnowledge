@@ -11,8 +11,9 @@ import blueForTalk from '../images/blueForTalk.gif'
 
 const BlueForTalkBackground = styled.div`
 background-image: url(${blueForTalk});
-height: 100vh;
-width: 100vw
+height: 95vh;
+width: 100vw;
+
 `
 
 
@@ -76,7 +77,7 @@ class TalkToAlpha extends Component {
         return (
             <BlueForTalkBackground>
                 <DialogueDiv>
-                    
+
 
                     <h2>Ask away!</h2>
                     <form onSubmit={this.talkToWolfram}>
@@ -85,7 +86,7 @@ class TalkToAlpha extends Component {
                             input type="text"
                             name="question"
                             onChange={this.handlechange}
-                            placeholder="What is the diameter of the earth?">
+                            placeholder="Type your question here">
 
                         </input>
                         <button type="submit">Ask Alpha</button>

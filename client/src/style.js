@@ -28,11 +28,14 @@ overflow:scroll;
 border:9px inset orange;
 position: relative;
 margin: auto;
+background:white;
 `
 export const DialogueDiv = styled.div`
-background:white;
+//background:white;
 text-align: center;
 border: solid black;
+//z-index:5
+color:red;
 `
 
 export const GenericDiv = styled.div`

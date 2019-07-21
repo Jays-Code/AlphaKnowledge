@@ -7,9 +7,13 @@ import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
 import axios from 'axios'
+import Particles from 'react-particles-js'
+import blueForTalk from '../images/blueForTalk.gif'
 
-
-
+const PinkBlueGradient = styled.div`
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,0.6895351890756303) 37%, rgba(0,212,255,1) 100%);
+`
 class UserLogin extends React.Component {
 
     state = {
@@ -73,6 +77,23 @@ class UserLogin extends React.Component {
         }
         return (
             <div>
+                <Particles 
+              params={{
+            		particles: {
+            			line_linked: {
+            				shadow: {
+            					enable: true,
+            					color: "#3CA9D1",
+            					blur: 5
+            				}
+            			}
+            		}
+            	}}
+              style={{
+                width: '100%',
+                backgroundImage: <PinkBlueGradient/>
+              }}
+            />
                 <h2>Login with a user</h2>
                 <div>
                     {/*
