@@ -11,8 +11,11 @@ import Particles from 'react-particles-js'
 import blueForTalk from '../images/blueForTalk.gif'
 
 const PinkBlueGradient = styled.div`
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,0.6895351890756303) 37%, rgba(0,212,255,1) 100%);
+//background: rgb(2,0,36);
+//background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,0.6895351890756303) 37%, rgba(0,212,255,1) 100%);
+background: linear-gradient(to right, rgb(203, 52, 181), rgb(68, 166, 187));
+height:100vh;
+width:100vw
 `
 class UserLogin extends React.Component {
 
@@ -31,13 +34,13 @@ class UserLogin extends React.Component {
         const cloneLoggedUser = { ...this.state.loginInfo }
         cloneLoggedUser[event.target.name] = event.target.value
         this.setState({ loginInfo: cloneLoggedUser })
-    
+
     }
-    
+
     handleChangeNewUser = (event) => {
-        const cloneNewUser = {...this.state.newUser }
+        const cloneNewUser = { ...this.state.newUser }
         cloneNewUser[event.target.name] = event.target.value
-        this.setState({ newUser: cloneNewUser})
+        this.setState({ newUser: cloneNewUser })
     }
 
     proceedLogin = (event) => {
@@ -56,14 +59,14 @@ class UserLogin extends React.Component {
             username: this.state.newUser.username,
             password: this.state.newUser.password
         }).then(res => {
-           // const usersList = [...this.state.users]
-           // usersList.unshift(res.data)
+            // const usersList = [...this.state.users]
+            // usersList.unshift(res.data)
             this.setState({
                 newUser: {
                     username: '',
                     password: ''
                 },
-               // users: usersList
+                // users: usersList
             })
 
         })
@@ -73,30 +76,33 @@ class UserLogin extends React.Component {
     render() {
         //console.log("from userLogin", this.props.currentUser.id)
         if (this.state.redirect) {
-            return <Redirect to={`/userdashboard/${this.props.currentUser.username}`}/>;
+            return <Redirect to={`/userdashboard/${this.props.currentUser.username}`} />;
         }
         return (
-            <div>
-                <Particles 
-              params={{
-            		particles: {
-            			line_linked: {
-            				shadow: {
-            					enable: true,
-            					color: "#3CA9D1",
-            					blur: 5
-            				}
-            			}
-            		}
-            	}}
-              style={{
-                width: '100%',
-                backgroundImage: <PinkBlueGradient/>
-              }}
-            />
-                <h2>Login with a user</h2>
-                <div>
-                    {/*
+            <PinkBlueGradient>
+                <DialogueDiv>
+                    <Particles
+                        params={{
+                            particles: {
+                                number: {
+                                    value: 40
+                                },
+                                line_linked: {
+                                    shadow: {
+                                        enable: true,
+                                        color: "#3CJ9D1",
+                                        blur: 5
+                                    }
+                                }
+                            }
+                        }}
+                        style={{
+                            width: '100%',
+                        }}
+                    />
+                    <h2>Login with a user</h2>
+                    
+                        {/*
                 }
                 <div>
                     
@@ -111,54 +117,55 @@ class UserLogin extends React.Component {
                     }
                 */}
 
-                    <form onSubmit={this.proceedLogin}>
-                        <div>
-                            <StyledLabel htmlFor="username">Username: </StyledLabel>
+                        <form onSubmit={this.proceedLogin}>
+                            <div>
+                                <StyledLabel htmlFor="username">Username: </StyledLabel>
+                                <input
+                                    id="loginUsername"
+                                    type="text"
+                                    name="loginUsername"
+                                    onChange={this.handleChangeLogin}
+                                    placeholder={this.state.loginInfo.loginUsername}
+                                />
+                            </div>
+                            <div>
+                                <input type="submit" value="Login" />
+                            </div>
+                        </form>
+                    
+
+
+
+
+
+                    <div>
+                        <h2>Create a new user</h2>
+                        <form onSubmit={this.createUser} >
+                            <StyledLabel htmlFor="subject">Username: </StyledLabel>
                             <input
-                                id="loginUsername"
-                                type="text"
-                                name="loginUsername"
-                                onChange={this.handleChangeLogin}
-                                placeholder={this.state.loginInfo.loginUsername}
+                                id="username"
+                                input type="text"
+                                name="username"
+                                onChange={this.handleChangeNewUser}
+                                placeholder={this.state.newUser.username}
                             />
-                        </div>
-                        <div>
-                            <input type="submit" value="Login" />
-                        </div>
-                    </form>
-                </div>
+                            <br></br>
 
+                            <StyledLabel>Password: </StyledLabel>
+                            <input
+                                id="password"
+                                input type="text"
+                                name="password"
+                                onChange={this.handleChangeNewUser}
+                                placeholder={this.state.newUser.password}
+                            />
 
+                            <button type="submit">Create</button>
+                        </form>
+                    </div>
+                </DialogueDiv>
+            </PinkBlueGradient>
 
-
-                
-                <div>
-                    <h2>Create a new user</h2>
-                    <form onSubmit={this.createUser} >
-                        <StyledLabel htmlFor="subject">Username: </StyledLabel>
-                        <input
-                            id="username"
-                            input type="text"
-                            name="username"
-                            onChange={this.handleChangeNewUser}
-                            placeholder={this.state.newUser.username}
-                        />
-                        <br></br>
-
-                        <StyledLabel>Password: </StyledLabel>
-                        <input
-                            id="password"
-                            input type="text"
-                            name="password"
-                            onChange={this.handleChangeNewUser}
-                            placeholder={this.state.newUser.password}
-                        />
-
-                        <button type="submit">Create</button>
-                    </form>
-                </div>
-                 
-            </div>
 
         )
 
