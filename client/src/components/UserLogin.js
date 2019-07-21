@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 import styled from 'styled-components';
 //import { StyledButton } from '../style'
-import { StyledScrollbox } from '../style'
+import { StyledScrollbox, LoginWrapper, StyledButton } from '../style'
 import { DialogueDiv } from '../style'
 import { GenericDiv } from '../style'
 import { StyledLabel } from '../style'
@@ -81,7 +81,7 @@ class UserLogin extends React.Component {
         }
         return (
             <PinkBlueGradient>
-                
+                <LoginWrapper>
                 <DialogueDiv>
                     
                     <h2>Login with a user</h2>
@@ -113,7 +113,7 @@ class UserLogin extends React.Component {
                                 />
                             </div>
                             <div>
-                                <input type="submit" value="Login" />
+                                <StyledButton type="submit" value="Login">Login</StyledButton>
                             </div>
                         </form>
                     
@@ -144,16 +144,17 @@ class UserLogin extends React.Component {
                                 placeholder={this.state.newUser.password}
                             />
 
-                            <button type="submit">Create</button>
+                            <StyledButton type="submit">Create</StyledButton>
                         </form>
                     </div>
                     
                 </DialogueDiv>
+                </LoginWrapper>
                 <Particles
                         params={{
                             particles: {
                                 number: {
-                                    value: 40
+                                    value: 70
                                 },
                                 line_linked: {
                                     shadow: {

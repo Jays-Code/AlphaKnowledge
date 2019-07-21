@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'
 import Particles from 'react-particles-js'
 import styled from 'styled-components';
-import { Wrapper } from '../style'
+import { AboutWrapper } from '../style'
+import { AboutInfo } from '../style'
+
 
 
 const Canvas = styled.div`
@@ -16,29 +18,29 @@ class About extends Component {
     `
     return (
       <div>
-        <Wrapper>
-          <div className="about">
+        <AboutWrapper>
+          <AboutInfo>
 
             <h1>AlphaKnowledge is a conversational knowledge app.</h1>
             <h4>---something about AlphaKnowledge---</h4>
             <h3>If you're just here to play with the bubbles, we don't blame you. 😉 </h3>
-          </div>
-        </Wrapper>
+          </AboutInfo>
+        
         <Canvas>
           <Particles
             params={{
               "particles": {
                 "number": {
-                  "value": 160,
+                  "value": 640,
                   "density": {
                     "enable": false
                   }
                 },
                 "size": {
-                  "value": 3,
+                  "value": 8,
                   "random": true,
                   "anim": {
-                    "speed": 4,
+                    "speed": 2,
                     "size_min": 0.3
                   }
                 },
@@ -47,7 +49,7 @@ class About extends Component {
                 },
                 "move": {
                   "random": true,
-                  "speed": 1,
+                  "speed": 2.5,
                   "direction": "top",
                   "out_mode": "out"
                 }
@@ -56,11 +58,11 @@ class About extends Component {
                 "events": {
                   "onhover": {
                     "enable": true,
-                    "mode": "bubble"
+                    "mode": "repulse"
                   },
                   "onclick": {
                     "enable": true,
-                    "mode": "repulse"
+                    "mode": "bubble"
                   }
                 },
                 "modes": {
@@ -71,13 +73,14 @@ class About extends Component {
                     "opacity": 0
                   },
                   "repulse": {
-                    "distance": 400,
-                    "duration": 4
+                    "distance": 125,
+                    "duration": 1.5
                   }
                 }
               }
             }} />
         </Canvas>
+        </AboutWrapper>
       </div>
     );
 
