@@ -26,16 +26,25 @@ class TalkToAlpha extends Component {
 
     state = {
         questionAsked: '',
+        time: '2019-06-15T21:46:30Z',
+        userId: '',
+        //TIME IS CURRENTLY HARDCODED AND STATIC.
+        // username: 
+
         wolfResponse: {
             result: ''
         },
         //userResponse: '',
+        redirect: false,
     }
-    /*
+
+
+
     componentDidMount = () => {
-       
+        console.log(this.props.currentUser)
+
     }
-    */
+
 
 
     talkToWolfram = (event) => {
@@ -46,16 +55,40 @@ class TalkToAlpha extends Component {
         //console.log(askedQuestion)
         //console.log(this.state.questionAsked)
         let question = Object.values(this.state.questionAsked)
-        console.log(question)
+        //console.log(question)
 
         //UNCOMMENT THIS LINE, DELETE NEXT LINE: axios.get(`/api/v1/wolfram/${question}`).then((res) => {
         axios.get(`/api/v1/wolfram/${question}`).then((res) => {
-            console.log(res.data)
+            //console.log(res.data)
             this.setState({ wolfResponse: res.data })
         }
         ).catch((error) => {
             console.log(error)
         })
+        .then(res => {
+            console.log(this.state.questionAsked,
+                this.state.wolfResponse.result,
+                this.state.time,
+                this.props.currentUser.id)
+        })
+            .then(res => axios.post('/api/v1/conversations/', {
+                question: this.state.questionAsked,
+                answer: this.state.wolfResponse.result,
+                time: this.state.time,
+                userId: this.props.currentUser.id
+            })
+            
+               
+                .then(res => {
+                    this.setState({
+                            questionAsked: '',
+                            answer: '',
+                            time: '2019-06-15T21:46:30Z',
+                            userId: ''
+                        
+                    })
+                })
+            )
     }
 
     handlechange = (event) => {
@@ -64,6 +97,8 @@ class TalkToAlpha extends Component {
         this.setState({ questionAsked: cloneQuestionAsked })
         //console.log(this.state.questionAsked)
     }
+
+
 
 
 

@@ -90,6 +90,10 @@ class Conversations extends Component {
         this.setState({ newConversation: cloneNewConversation })
     }
 
+    //Take output of conversational API response (variable saved in response div box), include that in
+    //a post request to that users Conversations database
+
+    //look into css generator for styling of the box that displays conversations
     render() {
 
         return (
